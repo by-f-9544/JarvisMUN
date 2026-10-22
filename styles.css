@@ -20,6 +20,7 @@ footer{border-top:1px solid var(--line);padding:27px 7.2%;display:flex;align-ite
   overflow: hidden;
   flex-shrink: 0;
   padding: 0;
+  background: transparent;
 }
 
 .brand-mark img {
