@@ -84,14 +84,34 @@
 </footer>
 
   <dialog id="accountDialog" class="modal">
-    <form method="dialog" class="modal-close-form"><button class="icon-button" aria-label="Close dialog">×</button></form>
-    <div class="modal-kicker">STUDENT SPACE</div><h2>Welcome back.</h2><p class="modal-copy">Create a local demo profile to personalize this portal on this device.</p>
-    <form id="accountForm" class="stack-form">
-      <label for="studentName">Your name</label><input id="studentName" name="studentName" autocomplete="name" required maxlength="60" placeholder="e.g. Alex Chen">
-      <label for="studentEmail">School email (optional)</label><input id="studentEmail" name="studentEmail" type="email" autocomplete="email" placeholder="you@example.com">
-      <button class="button button-primary" type="submit">Save demo profile</button>
+    <form method="dialog" class="modal-close-form">
+      <button class="icon-button" aria-label="Close dialog">×</button>
     </form>
-    <p class="form-footnote">Demo only: this profile stays in this browser and is not a secure account or shared with club leaders.</p>
+
+    <div class="modal-kicker">STUDENT SPACE</div>
+    <h2 id="accountHeading">Student sign in.</h2>
+    <p class="modal-copy" id="accountCopy">Sign in or create an account with your email.</p>
+    <p class="form-footnote" id="accountStatus" role="status" aria-live="polite"></p>
+
+    <form id="accountForm" class="stack-form">
+      <div id="studentNameField">
+        <label for="studentName">Your name</label>
+        <input id="studentName" name="studentName" autocomplete="name" maxlength="60" placeholder="e.g. Alex Chen">
+      </div>
+
+      <label for="studentEmail">Email</label>
+      <input id="studentEmail" name="studentEmail" type="email" autocomplete="email" required maxlength="120" placeholder="you@example.com">
+
+      <label for="studentPassword">Password</label>
+      <input id="studentPassword" name="studentPassword" type="password" autocomplete="current-password" required minlength="8" maxlength="72" placeholder="At least 8 characters">
+
+      <button class="button button-primary" id="accountSubmit" type="submit">Sign in</button>
+    </form>
+
+    <button class="text-link" id="accountModeToggle" type="button">Need an account? Sign up</button>
+    <button class="button button-outline button-small hidden" id="accountSignOut" type="button">Sign out</button>
+
+    <p class="form-footnote">Use a unique password for testing. Account authentication does not automatically grant access to club data.</p>
   </dialog>
 
   <dialog id="interestDialog" class="modal">
@@ -108,7 +128,9 @@
   </dialog>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="data.js"></script>
+  <script src="supabase-config.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
