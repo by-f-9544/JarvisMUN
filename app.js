@@ -29,42 +29,202 @@
   renderConferences();
   $("conferenceSearch").addEventListener("input", e => renderConferences(e.target.value));
 
-  const accountDialog = $("accountDialog"), interestDialog = $("interestDialog");
-  $("accountButton").addEventListener("click", () => {
-    const profile = read("jarvisMunDemoProfile");
-    if (profile) { $("studentName").value = profile.name || ""; $("studentEmail").value = profile.email || ""; }
+    const accountDialog = $("accountDialog"), interestDialog = $("interestDialog");
+
+  const supabaseConfig = window.SUPABASE_CONFIG;
+  const supabaseClient = window.supabase && supabaseConfig?.url && supabaseConfig?.publishableKey
+    ? window.supabase.createClient(supabaseConfig.url, supabaseConfig.publishableKey)
+    : null;
+
+  let accountMode = "signin";
+
+  function setAccountStatus(message) {
+    $("accountStatus").textContent = message;
+  }
+
+  function setAccountMode(mode) {
+    accountMode = mode;
+    const isSignup = mode === "signup";
+
+    $("accountHeading").textContent = isSignup ? "Create your account." : "Student sign in.";
+    $("accountCopy").textContent = isSignup
+      ? "Use your email and create a password."
+      : "Sign in with your email and password.";
+    $("studentNameField").classList.toggle("hidden", !isSignup);
+    $("studentName").required = isSignup;
+    $("studentPassword").autocomplete = isSignup ? "new-password" : "current-password";
+    $("accountSubmit").textContent = isSignup ? "Create account" : "Sign in";
+    $("accountModeToggle").textContent = isSignup
+      ? "Already have an account? Sign in"
+      : "Need an account? Sign up";
+
+    setAccountStatus("");
+  }
+
+  function updateAccountUI(session) {
+    const user = session?.user;
+
+    if (user) {
+      const name = user.user_metadata?.full_name || user.email?.split("@")[0] || "Student";
+
+      $("accountButton").textContent = `Hi, ${name.split(/\s+/)[0]}`;
+      $("accountModeToggle").classList.add("hidden");
+      $("accountForm").classList.add("hidden");
+      $("accountSignOut").classList.remove("hidden");
+      $("accountHeading").textContent = "You're signed in.";
+      $("accountCopy").textContent = `Signed in as ${user.email || "your account"}.`;
+      setAccountStatus("");
+    } else {
+      $("accountButton").textContent = "Student sign in";
+      $("accountModeToggle").classList.remove("hidden");
+      $("accountForm").classList.remove("hidden");
+      $("accountSignOut").classList.add("hidden");
+      setAccountMode("signin");
+    }
+  }
+
+  $("accountButton").addEventListener("click", async () => {
+    if (!supabaseClient) {
+      toast("Supabase didn't load. Please refresh and try again.");
+      return;
+    }
+
+    const { data, error } = await supabaseClient.auth.getSession();
+
+    if (error) {
+      toast(error.message);
+      return;
+    }
+
+    updateAccountUI(data.session);
     accountDialog.showModal();
   });
+
+  $("accountModeToggle").addEventListener("click", () => {
+    setAccountMode(accountMode === "signin" ? "signup" : "signin");
+  });
+
+  $("accountForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    if (!supabaseClient) {
+      setAccountStatus("Authentication isn't available. Refresh and try again.");
+      return;
+    }
+
+    const email = $("studentEmail").value.trim();
+    const password = $("studentPassword").value;
+    const name = $("studentName").value.trim();
+    const submit = $("accountSubmit");
+
+    submit.disabled = true;
+    setAccountStatus("Please wait…");
+
+    try {
+      if (accountMode === "signup") {
+        if (!name) {
+          setAccountStatus("Please enter your name.");
+          return;
+        }
+
+        const { data, error } = await supabaseClient.auth.signUp({
+          email,
+          password,
+          options: {
+            data: { full_name: name },
+            emailRedirectTo: window.location.origin + window.location.pathname
+          }
+        });
+
+        if (error) throw error;
+
+        if (data.session) {
+          updateAccountUI(data.session);
+          accountDialog.close();
+          toast("Account created and signed in.");
+        } else {
+          setAccountStatus("Check your email for a confirmation link to finish creating your account.");
+        }
+      } else {
+        const { data, error } = await supabaseClient.auth.signInWithPassword({
+          email,
+          password
+        });
+
+        if (error) throw error;
+
+        updateAccountUI(data.session);
+        accountDialog.close();
+        toast("You're signed in!");
+      }
+    } catch (error) {
+      setAccountStatus(error.message || "Authentication failed. Please try again.");
+    } finally {
+      submit.disabled = false;
+    }
+  });
+
+  $("accountSignOut").addEventListener("click", async () => {
+    if (!supabaseClient) {
+      setAccountStatus("Authentication isn't available.");
+      return;
+    }
+
+    const { error } = await supabaseClient.auth.signOut();
+
+    if (error) {
+      setAccountStatus(error.message);
+      return;
+    }
+
+    updateAccountUI(null);
+    setAccountStatus("You've signed out.");
+    toast("Signed out.");
+  });
+
+  if (supabaseClient) {
+    supabaseClient.auth.onAuthStateChange((_event, session) => {
+      updateAccountUI(session);
+    });
+
+    supabaseClient.auth.getSession().then(({ data, error }) => {
+      if (!error) updateAccountUI(data.session);
+    });
+  } else {
+    console.warn("Supabase config or library is missing.");
+  }
+
   $("interestButton").addEventListener("click", () => {
-    const profile = read("jarvisMunDemoProfile");
-    if (profile) { $("interestName").value = profile.name || ""; $("interestEmail").value = profile.email || ""; }
     interestDialog.showModal();
   });
+
   function read(key) {
-    try { return JSON.parse(localStorage.getItem(key) || "null"); } catch { return null; }
+    try {
+      return JSON.parse(localStorage.getItem(key) || "null");
+    } catch {
+      return null;
+    }
   }
-  $("accountForm").addEventListener("submit", e => {
+
+  $("interestForm").addEventListener("submit", (e) => {
     e.preventDefault();
-    const profile = { name: $("studentName").value.trim(), email: $("studentEmail").value.trim() };
-    try { localStorage.setItem("jarvisMunDemoProfile", JSON.stringify(profile)); }
-    catch { toast("Browser storage is unavailable. Please check your browser settings."); return; }
-    accountDialog.close();
-    $("accountButton").textContent = profile.name ? `Hi, ${profile.name.split(/\s+/)[0]}` : "Student sign in";
-    toast("Demo profile saved on this device.");
-  });
-  $("interestForm").addEventListener("submit", e => {
-    e.preventDefault();
+
     const form = new FormData(e.currentTarget);
     const submission = Object.fromEntries(form.entries());
+
     try {
       const entries = read("jarvisMunDemoInterests") || [];
-      entries.push({...submission, submittedAt: new Date().toISOString()});
+      entries.push({ ...submission, submittedAt: new Date().toISOString() });
       localStorage.setItem("jarvisMunDemoInterests", JSON.stringify(entries));
-    } catch { toast("Could not save in this browser. Please check storage settings."); return; }
-    interestDialog.close(); e.currentTarget.reset(); toast("Interest saved locally on this device. No email was sent.");
+    } catch {
+      toast("Could not save in this browser. Please check storage settings.");
+      return;
+    }
+
+    interestDialog.close();
+    e.currentTarget.reset();
+    toast("Interest saved locally on this device. No email was sent.");
   });
-  const savedProfile = read("jarvisMunDemoProfile");
-  if (savedProfile?.name) $("accountButton").textContent = `Hi, ${savedProfile.name.split(/\s+/)[0]}`;
 
   $("menuToggle").addEventListener("click", () => {
     const nav = $("mainNav"); const open = nav.classList.toggle("open");
