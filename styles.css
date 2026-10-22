@@ -13,10 +13,10 @@ footer{border-top:1px solid var(--line);padding:27px 7.2%;display:flex;align-ite
 @media(max-width:640px){.announcement-bar{font-size:8px;letter-spacing:1.2px}.site-header{height:70px}.menu-toggle{display:block}nav{display:none;position:absolute;left:0;right:0;top:69px;background:var(--paper);padding:20px 6% 24px;border-bottom:1px solid var(--line);box-shadow:0 15px 20px #123d350b;flex-direction:column;align-items:stretch;gap:20px}nav.open{display:flex}nav a{font-size:13px}.hero{grid-template-columns:1fr;padding:54px 7% 35px;gap:5px}.hero h1{font-size:clamp(45px,12vw,62px);letter-spacing:-2.8px}.hero-intro{font-size:13px}.hero-note{margin-top:26px}.hero-art{height:330px;transform:none;margin:0 -8px}.globe{width:230px}.orbit{width:300px;height:110px}.orbit-two{width:285px;height:150px}.card-top{right:0;top:25px}.card-bottom{left:0;bottom:32px}.floating-card{padding:11px}.art-caption{right:5px;bottom:1px;font-size:8px}.ticker{padding:14px 0}.ticker div{justify-content:flex-start;gap:22px;animation:marquee 24s linear infinite;width:max-content}.section{padding:62px 6%}.section-heading{align-items:flex-start;flex-direction:column;gap:12px;margin-bottom:27px}.section-heading h2{font-size:34px}.section-heading>p{max-width:100%}.updates-layout{grid-template-columns:1fr}.featured-update{min-height:230px}.updates-list{margin-top:5px}.conference-grid{grid-template-columns:1fr}.conference-card{min-height:220px}.filter-row{align-items:flex-start;gap:14px;flex-direction:column}.search-box{width:100%}.cta-section{grid-template-columns:35px 1fr;padding:30px 23px;gap:14px;margin:8px 4% 0}.cta-symbol{font-size:28px}.cta-section .button{grid-column:2;justify-self:start}.about-section{grid-template-columns:1fr;gap:15px;padding-top:62px;padding-bottom:62px}.about-section>div:last-child{grid-column:auto}.about-section h2{font-size:34px}footer{padding:25px 6%;flex-wrap:wrap;gap:16px}footer>span:nth-child(2){order:3;width:100%}.modal{padding:25px}.hero-actions{gap:17px}.hero-actions .button{padding:13px}.text-link{font-size:11px}}
 @keyframes marquee{to{transform:translateX(-20%)}}
 .brand-mark {
-  width: 39px;
-  height: 39px;
-  min-width: 39px;
-  min-height: 39px;
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
   overflow: hidden;
   flex-shrink: 0;
   padding: 0;
