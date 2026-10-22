@@ -40,3 +40,10 @@ footer{border-top:1px solid var(--line);padding:27px 7.2%;display:flex;align-ite
 .brand-mark {
   background: transparent !important;
 }
+.site-header .brand-mark,
+footer .brand-mark {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
