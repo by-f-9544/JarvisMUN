@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123d35">
+  <meta name="description" content="Jarvis Collegiate Model United Nations student portal: announcements, conferences, and interest forms.">
+  <title>Jarvis Collegiate MUN Portal</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="announcement-bar"><span class="pulse"></span> JARVIS COLLEGIATE · MODEL UNITED NATIONS</div>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="Jarvis MUN Portal home">
+      <span class="brand-mark">J<span>M</span></span>
+      <span class="brand-text"><strong>JARVIS MUN</strong><small>STUDENT PORTAL</small></span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <nav id="mainNav">
+      <a href="#updates">Updates</a><a href="#conferences">Conferences</a><a href="#about">About</a>
+      <button class="button button-outline button-small" id="accountButton">Student sign in</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-line"></span> DIPLOMACY STARTS HERE</div>
+        <h1>Find your voice.<br><em>Shape the world.</em></h1>
+        <p class="hero-intro">Your home base for Jarvis Collegiate Model United Nations. Stay up to date, discover conferences, and get ready to represent.</p>
+        <div class="hero-actions"><a class="button button-primary" href="#conferences">Explore conferences <span aria-hidden="true">↗</span></a><a class="text-link" href="#updates">Latest updates <span aria-hidden="true">↓</span></a></div>
+        <div class="hero-note"><span class="live-dot"></span> Your MUN journey, all in one place</div>
+      </div>
+      <div class="hero-art" aria-label="Abstract globe illustration">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="globe"><div class="globe-long"></div><div class="globe-lat"></div><div class="globe-lat globe-lat-two"></div><div class="globe-shine"></div></div>
+        <div class="floating-card card-top"><span class="mini-icon">✳</span><span><b>Think globally</b><small>Act with purpose</small></span></div>
+        <div class="floating-card card-bottom"><span class="mini-number">01</span><span><b>Research. Debate. Resolve.</b><small>Every voice matters.</small></span></div>
+        <div class="art-caption">TORONTO, ONTARIO <span>·</span> EST. JARVIS</div>
+      </div>
+    </section>
+
+    <section class="ticker" aria-label="Portal highlights"><div><span>RESEARCH</span> ✳ <span>NEGOTIATE</span> ✳ <span>COLLABORATE</span> ✳ <span>LEAD</span> ✳ <span>RESEARCH</span> ✳ <span>NEGOTIATE</span> ✳ <span>COLLABORATE</span> ✳ <span>LEAD</span></div></section>
+
+    <section class="section updates-section" id="updates">
+      <div class="section-heading"><div><div class="eyebrow">THE NOTICEBOARD</div><h2>What’s happening<span class="period">.</span></h2></div><p>Important news and reminders from your MUN community.</p></div>
+      <div class="updates-layout">
+        <div class="featured-update" id="featuredUpdate"></div>
+        <div class="updates-list" id="updatesList"></div>
+      </div>
+    </section>
+
+    <section class="section conferences-section" id="conferences">
+      <div class="section-heading"><div><div class="eyebrow">YOUR NEXT CHAPTER</div><h2>Conference calendar<span class="period">.</span></h2></div><p>Keep an eye on upcoming opportunities. Confirm details with your club advisor before making plans.</p></div>
+      <div class="filter-row"><span class="result-count" id="conferenceCount">UPCOMING OPPORTUNITIES</span><label class="search-box"><span>⌕</span><input id="conferenceSearch" type="search" placeholder="Search conferences…" aria-label="Search conferences"></label></div>
+      <div class="conference-grid" id="conferenceGrid"></div>
+      <div class="empty-state hidden" id="conferenceEmpty">No conferences match that search. Try another term.</div>
+    </section>
+
+    <section class="cta-section" id="about">
+      <div class="cta-symbol">✳</div><div><div class="eyebrow eyebrow-light">READY TO GET INVOLVED?</div><h2>Your next great debate<br>starts with a conversation.</h2><p>Share your interest in conferences or ask the club to follow up with you.</p></div>
+      <button class="button button-light" id="interestButton">Register your interest <span>↗</span></button>
+    </section>
+
+    <section class="section about-section">
+      <div class="about-number">01 / ABOUT THE PORTAL</div><div><h2>One community.<br><em>Many perspectives.</em></h2></div><div><p>This portal is designed to keep Jarvis MUN students connected to club announcements, conference opportunities, and ways to participate.</p><p class="muted">This is a student-built demo portal. Official dates, fees, selection processes, and policies should be confirmed with the club advisor.</p></div>
+    </section>
+  </main>
+
+  <footer><a class="brand footer-brand" href="#"><span class="brand-mark">J<span>M</span></span><span class="brand-text"><strong>JARVIS MUN</strong><small>STUDENT PORTAL</small></span></a><span>Built for curious minds and constructive debate.</span><span>© <span id="year"></span> Jarvis MUN Portal</span></footer>
+
+  <dialog id="accountDialog" class="modal">
+    <form method="dialog" class="modal-close-form"><button class="icon-button" aria-label="Close dialog">×</button></form>
+    <div class="modal-kicker">STUDENT SPACE</div><h2>Welcome back.</h2><p class="modal-copy">Create a local demo profile to personalize this portal on this device.</p>
+    <form id="accountForm" class="stack-form">
+      <label for="studentName">Your name</label><input id="studentName" name="studentName" autocomplete="name" required maxlength="60" placeholder="e.g. Alex Chen">
+      <label for="studentEmail">School email (optional)</label><input id="studentEmail" name="studentEmail" type="email" autocomplete="email" placeholder="you@example.com">
+      <button class="button button-primary" type="submit">Save demo profile</button>
+    </form>
+    <p class="form-footnote">Demo only: this profile stays in this browser and is not a secure account or shared with club leaders.</p>
+  </dialog>
+
+  <dialog id="interestDialog" class="modal">
+    <form method="dialog" class="modal-close-form"><button class="icon-button" aria-label="Close dialog">×</button></form>
+    <div class="modal-kicker">GET INVOLVED</div><h2>Register your interest.</h2><p class="modal-copy">Tell the club what you’re interested in. This demo saves your response on this device only.</p>
+    <form id="interestForm" class="stack-form">
+      <label for="interestName">Name</label><input id="interestName" name="name" required maxlength="60" placeholder="Your name">
+      <label for="interestEmail">Email</label><input id="interestEmail" name="email" type="email" required maxlength="120" placeholder="you@example.com">
+      <label for="interestType">I’m interested in…</label><select id="interestType" name="interest" required><option value="">Choose one</option><option>Attending a conference</option><option>Joining the MUN club</option><option>Training / workshops</option><option>Helping organize events</option><option>General information</option></select>
+      <label for="interestMessage">Anything else? <span class="optional">(optional)</span></label><textarea id="interestMessage" name="message" rows="3" maxlength="500" placeholder="Your committee interests, questions, or ideas…"></textarea>
+      <button class="button button-primary" type="submit">Save interest form</button>
+    </form>
+    <p class="form-footnote">No email is sent and club leaders cannot see this submission until a real backend is connected.</p>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
