@@ -37,3 +37,6 @@ footer{border-top:1px solid var(--line);padding:27px 7.2%;display:flex;align-ite
   min-width: 32px;
   min-height: 32px;
 }
+.brand-mark {
+  background: transparent !important;
+}
