@@ -42,15 +42,18 @@ window.PORTAL_DATA = {
   ],
   conferences: [
     {
-      name: "Conference opportunity",
-      type: "In-person",
-      status: "Planning",
-      date: "Date TBA",
-      location: "Location TBA",
-      description: "Replace this sample listing with a real conference, its dates, location, and application details.",
-      link: "",
-      linkLabel: "Details soon"
-    },
+  name: "CCIMUN - Cedarbrae Collegiate Institute MUN",
+  type: "In-person",
+  status: "Upcoming",
+  date: "Saturday, December 5, 2026",
+  location: "Cedarbrae Collegiate Institute",
+  description: "Explore the CCIMUN conference opportunity and visit the official website for conference details and registration.",
+  logo: "ccimun-logo.png",
+  registrationLink: "https://forms.gle/JuXbDPF5F3aeEfjT7",
+  officialLink: "https://www.ccimun.com/",
+  link: "https://www.ccimun.com/",
+  linkLabel: "Official Website"
+  },
     {
       name: "Regional MUN conference",
       type: "Conference",
