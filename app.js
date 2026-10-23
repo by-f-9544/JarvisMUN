@@ -21,9 +21,41 @@
     $("conferenceCount").textContent = `${filtered.length} OPPORTUNIT${filtered.length === 1 ? "Y" : "IES"}`;
     $("conferenceEmpty").classList.toggle("hidden", filtered.length !== 0);
     grid.innerHTML = filtered.map(c => {
-      const isPlanning = (c.status || "").toLowerCase().includes("planning") || (c.status || "").toLowerCase().includes("tba");
-      const link = c.link && /^https?:\/\//i.test(c.link) ? `<a class="conference-link" href="${safe(c.link)}" target="_blank" rel="noopener noreferrer">${safe(c.linkLabel || "Official details")} ↗</a>` : `<span class="conference-link">${safe(c.linkLabel || "Details soon")}</span>`;
-      return `<article class="conference-card"><div class="conference-top"><span class="conference-type">${safe(c.type || "Conference")}</span><span class="status ${isPlanning ? "planning" : ""}">${safe(c.status || "Update soon")}</span></div><h3>${safe(c.name)}</h3><p>${safe(c.description)}</p><div class="conference-meta"><span><b>${safe(c.date || "Date TBA")}</b><br>${safe(c.location || "Location TBA")}</span>${link}</div></article>`;
+      const isPlanning = (c.status || "").toLowerCase().includes("planning") ||
+        (c.status || "").toLowerCase().includes("tba");
+
+      const logo = c.logo
+        ? `<img class="conference-logo" src="${safe(c.logo)}" alt="${safe(c.name)} logo">`
+        : "";
+
+      const registrationLink = c.registrationLink &&
+        /^https?:\/\//i.test(c.registrationLink)
+        ? `<a class="conference-link" href="${safe(c.registrationLink)}" target="_blank" rel="noopener noreferrer">Register ↗</a>`
+        : "";
+
+      const officialLink = c.officialLink &&
+        /^https?:\/\//i.test(c.officialLink)
+        ? `<a class="conference-link" href="${safe(c.officialLink)}" target="_blank" rel="noopener noreferrer">Official Website ↗</a>`
+        : c.link && /^https?:\/\//i.test(c.link)
+        ? `<a class="conference-link" href="${safe(c.link)}" target="_blank" rel="noopener noreferrer">${safe(c.linkLabel || "Official details")} ↗</a>`
+        : "";
+
+      return `<article class="conference-card">
+        <div class="conference-top">
+          <span class="conference-type">${safe(c.type || "Conference")}</span>
+          <span class="status ${isPlanning ? "planning" : ""}">${safe(c.status || "Update soon")}</span>
+        </div>
+        ${logo}
+        <h3>${safe(c.name)}</h3>
+        <p>${safe(c.description)}</p>
+        <div class="conference-meta">
+          <span><b>${safe(c.date || "Date TBA")}</b><br>${safe(c.location || "Location TBA")}</span>
+        </div>
+        <div class="conference-actions">
+          ${registrationLink}
+          ${officialLink}
+        </div>
+      </article>`;
     }).join("");
   }
   renderConferences();
