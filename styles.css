@@ -77,3 +77,73 @@ footer .brand-mark {
   background: #123d35;
   color: #fff;
 }
+
+.president-section {
+  border-top: 1px solid var(--line);
+  padding-top: 76px;
+  padding-bottom: 82px;
+}
+
+.president-heading {
+  margin-bottom: 30px;
+}
+
+.president-heading h2 {
+  font: 800 clamp(30px, 3.5vw, 43px)/1.2 Manrope, sans-serif;
+  letter-spacing: -1.8px;
+  margin: 13px 0 0;
+}
+
+.president-profile {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  align-items: center;
+  gap: 36px;
+  max-width: 820px;
+}
+
+.president-photo {
+  display: block;
+  width: 100%;
+  max-width: 240px;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+}
+
+.president-role {
+  font: 10px 'DM Mono', monospace;
+  letter-spacing: 1.4px;
+  color: var(--green2);
+  margin-bottom: 12px;
+}
+
+.president-copy h3 {
+  font: 800 clamp(26px, 3vw, 36px)/1.2 Manrope, sans-serif;
+  letter-spacing: -1.2px;
+  margin: 0 0 14px;
+}
+
+.president-bio {
+  max-width: 520px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.9;
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .president-section {
+    padding-top: 60px;
+    padding-bottom: 62px;
+  }
+
+  .president-profile {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 22px;
+  }
+
+  .president-photo {
+    max-width: 220px;
+  }
+}
