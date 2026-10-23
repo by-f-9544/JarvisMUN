@@ -269,32 +269,9 @@
   $("year").textContent = new Date().getFullYear();
 })();
 
-.conference-logo {
-  display: block;
-  width: 100%;
-  height: 150px;
-  object-fit: contain;
-  margin: 18px 0 4px;
-  border-radius: 8px;
-}
 
-.conference-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 18px;
-}
 
-.conference-actions .conference-link {
-  display: inline-block;
-  text-decoration: none;
-  border: 1px solid #d7dfd7;
-  border-radius: 6px;
-  padding: 10px 12px;
-  transition: background .2s, color .2s;
-}
 
-.conference-actions .conference-link:hover {
-  background: #123d35;
-  color: #fff;
+
+
 }
