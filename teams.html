@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123d35">
+  <title>Teams | Jarvis Collegiate MUN</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="JCIMUNWHITE.png">
+</head>
+<body>
+
+  <div class="announcement-bar">
+    <span class="pulse"></span>
+    JARVIS COLLEGIATE · MODEL UNITED NATIONS
+  </div>
+
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">
+        <img src="JCIMUNBLACK.png" alt="Jarvis MUN Logo">
+      </span>
+      <span class="brand-text">
+        <strong>JARVIS COLLEGIATE INSTITUTE</strong>
+        <small>MODEL UNITED NATIONS CLUB</small>
+      </span>
+    </a>
+
+    <nav>
+      <a href="index.html#updates">Updates</a>
+      <a href="index.html#conferences">Conferences</a>
+      <a href="teams.html">Teams</a>
+      <a href="index.html#about">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="eyebrow">THE JARVIS MUN COMMUNITY</div>
+      <h1>Our Teams<span class="period">.</span></h1>
+      <p class="hero-intro">
+        Meet the delegations representing Jarvis Collegiate
+        at Model United Nations conferences.
+      </p>
+
+      <div class="conference-grid" style="margin-top:45px;">
+
+        <a href="ccimun.html" class="conference-card">
+          <div class="conference-top">
+            <span class="conference-type">DELEGATION</span>
+            <span class="status">Team Selected</span>
+          </div>
+
+          <img
+            class="conference-logo"
+            src="ccimun-logo.png"
+            alt="CCIMUN Logo"
+          >
+
+          <h3>CCIMUN 2026</h3>
+
+          <p>
+            Cedarbrae Collegiate Institute Model United Nations.
+            Explore the Jarvis delegation and assigned committees.
+          </p>
+
+          <div class="conference-meta">
+            <span><b>December 5, 2026</b></span>
+            <span>View team ↗</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a class="brand footer-brand" href="index.html">
+      <span class="brand-mark">
+        <img src="JCIMUNBLACK.png" alt="Jarvis MUN Logo">
+      </span>
+      <span class="brand-text">
+        <strong>JARVIS MUN</strong>
+      </span>
+    </a>
+    <span>Built for curious minds and constructive debate.</span>
+    <span>© <span id="year"></span> Jarvis MUN Portal</span>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>
