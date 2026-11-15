@@ -134,3 +134,10 @@ footer .brand-mark {
     line-height: 1.8;
   }
 }
+.hero-emblem {
+    width: 280px;
+    height: 280px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
