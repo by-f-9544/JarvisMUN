@@ -8,7 +8,7 @@
   };
   const first = data.announcements[0];
   if (first) {
-    $("featuredUpdate").innerHTML = `<div><span class="tag">${safe(first.category || "UPDATE")}</span><div class="update-date">${safe(first.date || "")}</div><h3>${safe(first.title)}</h3><p>${safe(first.body)}</p></div><span class="update-arrow" aria-hidden="true">↗</span>`;
+    $("featuredUpdate").innerHTML = `<div><span class="tag">${safe(first.category || "UPDATE")}</span><div class="update-date">${safe(first.date || "")}</div><h3>${safe(first.title)}</h3><p>${safe(first.body)}</p><a class="conference-link" href="teams.html">View Delegation Teams ↗</a></div><span class="update-arrow" aria-hidden="true">↗</span>`;
     $("updatesList").innerHTML = data.announcements.slice(1).map(item => `<article class="update-row"><div class="date-block"><strong>${safe(item.day || "—")}</strong><small>${safe(item.month || "")}</small></div><div><h3>${safe(item.shortTitle || item.title)}</h3><p>${safe(item.shortBody || item.body)}</p></div><span class="row-arrow" aria-hidden="true">↗</span></article>`).join("");
   } else {
     $("featuredUpdate").innerHTML = "<p>No announcements yet. Add them in data.js.</p>";
