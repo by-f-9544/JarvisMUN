@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#123d75">
+  <title>CCIMUN Delegation | Jarvis MUN</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="JCIMUNWHITE.png">
+
+  <style>
+    .delegation-hero {
+      padding: 65px 0 35px;
+    }
+
+    .delegation-subtitle {
+      color: var(--muted);
+      max-width: 650px;
+    }
+
+    .roster-panel {
+      margin-top: 30px;
+      background: white;
+      border: 1px solid #dce5ee;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .roster-toolbar {
+      padding: 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      border-bottom: 1px solid #e5ebf1;
+    }
+
+    .roster-search {
+      width: 100%;
+      max-width: 360px;
+      padding: 12px 15px;
+      border: 1px solid #ccd8e5;
+      border-radius: 9px;
+      font: inherit;
+    }
+
+    .roster-count {
+      color: #64748b;
+      font-size: 0.9rem;
+    }
+
+    .table-scroll {
+      overflow-x: auto;
+    }
+
+    .roster-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 600px;
+      text-align: left;
+    }
+
+    .roster-table th {
+      background: #eef4fa;
+      color: #24476b;
+      padding: 15px 22px;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+    }
+
+    .roster-table td {
+      padding: 17px 22px;
+      border-top: 1px solid #edf1f5;
+      color: #26384b;
+    }
+
+    .roster-table tbody tr {
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .roster-table tbody tr:hover,
+    .roster-table tbody tr.selected {
+      background: #f2f7fc;
+    }
+
+    .delegate-name {
+      font-weight: 650;
+      color: #173e68;
+    }
+
+    .role-label {
+      color: #526579;
+    }
+
+    .head-delegate {
+      color: #245a8d;
+      font-weight: 700;
+    }
+
+    .committee-tba {
+      color: #64748b;
+      font-style: italic;
+    }
+
+    .detail-card {
+      display: none;
+      margin: 20px 22px;
+      padding: 20px;
+      border-radius: 12px;
+      background: #eef4fa;
+      border: 1px solid #d6e3f0;
+    }
+
+    .detail-card.active {
+      display: block;
+    }
+
+    .detail-card h3 {
+      margin: 0 0 8px;
+      color: #173e68;
+    }
+
+    .detail-card p {
+      margin: 5px 0;
+      color: #526579;
+    }
+
+    .empty-state {
+      display: none;
+      padding: 30px;
+      text-align: center;
+      color: #64748b;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 25px;
+      color: #245a8d;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      .delegation-hero {
+        padding-top: 40px;
+      }
+
+      .roster-toolbar {
+        align-items: stretch;
+      }
+
+      .roster-search {
+        max-width: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="announcement-bar">
+    <span class="pulse"></span>
+    JARVIS COLLEGIATE · MODEL UNITED NATIONS
+  </div>
+
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">
+        <img src="JCIMUNBLACK.png" alt="Jarvis MUN Logo">
+      </span>
+      <span class="brand-text">
+        <strong>JARVIS COLLEGIATE INSTITUTE</strong>
+        <small>MODEL UNITED NATIONS CLUB</small>
+      </span>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle"
+      aria-label="Toggle navigation" aria-expanded="false">☰</button>
+
+    <nav id="mainNav">
+      <a href="index.html#updates">Updates</a>
+      <a href="index.html#conferences">Conferences</a>
+      <a href="teams.html">Teams</a>
+      <a href="index.html#about">About</a>
+    </nav>
+  </header>
+
+  <main class="section">
+
+    <section class="delegation-hero">
+      <div class="eyebrow">OUR 2026 DELEGATION</div>
+
+      <h1>CCIMUN Delegation<span class="period">.</span></h1>
+
+      <p class="delegation-subtitle">
+        Meet the students representing Jarvis Collegiate at
+        Cedarbrae Collegiate Institute Model United Nations.
+      </p>
+
+      <a class="back-link" href="teams.html">← Back to Our Teams</a>
+    </section>
+
+    <section class="roster-panel">
+
+      <div class="roster-toolbar">
+        <div>
+          <h2 style="margin: 0 0 5px;">Team Directory</h2>
+          <span class="roster-count" id="rosterCount">
+            14 delegates
+          </span>
+        </div>
+
+        <input
+          type="search"
+          class="roster-search"
+          id="rosterSearch"
+          placeholder="Search delegates or committees..."
+          aria-label="Search delegates or committees"
+        >
+      </div>
+
+      <div class="table-scroll">
+        <table class="roster-table">
+          <thead>
+            <tr>
+              <th>Delegate</th>
+              <th>Role</th>
+              <th>Committee</th>
+            </tr>
+          </thead>
+
+          <tbody id="rosterBody">
+
+            <tr data-name="Chris Feng" data-role="Head Delegate" data-committee="TBA">
+              <td class="delegate-name">Chris Feng</td>
+              <td class="head-delegate">Head Delegate</td>
+              <td class="committee-tba">TBA</td>
+            </tr>
+
+            <tr data-name="Mandana Bahrami" data-role="Delegate" data-committee="TBA">
+              <td class="delegate-name">Mandana Bahrami</td>
+              <td class="role-label">Delegate</td>
+              <td class="committee-tba">TBA</td>
+            </tr>
+
+            <tr data-name="Simon morey" data-role="Delegate" data-committee="TBA">
+              <td class="delegate-name">Simon morey</td>
+              <td class="role-label">Delegate</td>
+              <td class="committee-tba">TBA</td>
+            </tr>
+
+            <tr data-name="Amira Ramoutar" data-role="Delegate" data-committee="TBA">
+              <td class="delegate-name">Amira Ramoutar</td>
+              <td class="role-label">Delegate</td>
+              <td class="committee-tba">TBA</td>
+            </tr>
+
+            <tr data-name="Ibrahim Waqas" data-role="Delegate" data-committee="TBA">
+              <td class="delegate-name">Ibrahim Waqas</td>
+              <td class="role-label">Delegate</td>
+              <td class="committee-tba">TBA</td>
+            </tr>
+
+            <tr data-name="Jayden So" data-role="Delegate" data-committee="TBA">
+              <td class="delegate-name">Jayden So</td>
+              <td class="role-label">Delegate</td>
+              <td class="committee-tba">TBA</td>
+            </tr>
+
+            <tr data-name="Zach George" data-role="Delegate" data-committee="TBA">
+              <td class="delegate-name">Zach George</td>
+              <td class="role-label">Delegate</td>
+              <td class="committee-tba">TBA</td>
+            </tr>
+
+            <tr data-name="Ishfar Jabir" data-role="Delegate" data-committee="TBA">
+              <td class="delegate-name">Ishfar Jabir</td>
+              <td class="role-label">Delegate</td>
+              <td class="committee-tba">TBA</td>
+            </tr>
+
+            <tr data-name="Vincent Pang" data-role="Delegate" data-committee="TBA">
+              <td class="delegate-name">Vincent Pang</td>
+              <td class="role-label">Delegate</td>
+              <td class="committee-tba">TBA</td>
+            </tr>
+
+            <tr data-name="Roman Sarwar" data-role="Delegate" data-committee="TBA">
+              <td class="delegate-name">Roman Sarwar</td>
+              <td class="role-label">Delegate</td>
+              <td class="committee-tba">TBA</td>
+            </tr>
+
+            <tr data-name="Edric Chan" data-role="Delegate" data-committee="TBA">
+              <td class="delegate-name">Edric Chan</td>
+              <td class="role-label">Delegate</td>
+              <td class="committee-tba">TBA</td>
+            </tr>
+
+            <tr data-name="Felicity Shwe Hein" data-role="Delegate" data-committee="TBA">
+              <td class="delegate-name">Felicity Shwe Hein</td>
+              <td class="role-label">Delegate</td>
+              <td class="committee-tba">TBA</td>
+            </tr>
+
+            <tr data-name="Aisha Saliu" data-role="Delegate" data-committee="TBA">
+              <td class="delegate-name">Aisha Saliu</td>
+              <td class="role-label">Delegate</td>
+              <td class="committee-tba">TBA</td>
+            </tr>
+
+            <tr data-name="Yohana Abebe" data-role="Delegate" data-committee="TBA">
+              <td class="delegate-name">Yohana Abebe</td>
+              <td class="role-label">Delegate</td>
+              <td class="committee-tba">TBA</td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+      <div class="empty-state" id="emptyState">
+        No matching delegates found.
+      </div>
+
+      <div class="detail-card" id="detailCard">
+        <h3 id="detailName"></h3>
+        <p><strong>Role:</strong> <span id="detailRole"></span></p>
+        <p><strong>Committee:</strong> <span id="detailCommittee"></span></p>
+        <p>Jarvis Collegiate · CCIMUN 2026 Delegation</p>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+    <a class="brand footer-brand" href="index.html">
+      <span class="brand-mark">
+        <img src="JCIMUNBLACK.png" alt="Jarvis MUN Logo">
+      </span>
+      <span class="brand-text">
+        <strong>JARVIS MUN</strong>
+      </span>
+    </a>
+
+    <span>Built for curious minds and constructive debate.</span>
+    <span>© <span id="year"></span> Jarvis MUN Portal</span>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    // Mobile navigation
+    const menuToggle = document.getElementById("menuToggle");
+    const mainNav = document.getElementById("mainNav");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = mainNav.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", isOpen);
+    });
+
+    // Searchable roster
+    const searchInput = document.getElementById("rosterSearch");
+    const rosterRows = Array.from(
+      document.querySelectorAll("#rosterBody tr")
+    );
+    const rosterCount = document.getElementById("rosterCount");
+    const emptyState = document.getElementById("emptyState");
+    const detailCard = document.getElementById("detailCard");
+
+    function filterRoster() {
+      const query = searchInput.value.trim().toLowerCase();
+      let visibleCount = 0;
+
+      rosterRows.forEach(row => {
+        const searchableText = (
+          row.dataset.name + " " +
+          row.dataset.role + " " +
+          row.dataset.committee
+        ).toLowerCase();
+
+        const matches = searchableText.includes(query);
+
+        row.style.display = matches ? "" : "none";
+
+        if (matches) {
+          visibleCount++;
+        } else {
+          row.classList.remove("selected");
+        }
+      });
+
+      rosterCount.textContent =
+        visibleCount + (visibleCount === 1 ? " delegate" : " delegates");
+
+      emptyState.style.display =
+        visibleCount === 0 ? "block" : "none";
+
+      if (visibleCount === 0) {
+        detailCard.classList.remove("active");
+      }
+    }
+
+    searchInput.addEventListener("input", filterRoster);
+
+    // Click a delegate to show their details
+    rosterRows.forEach(row => {
+      row.addEventListener("click", () => {
+        rosterRows.forEach(otherRow =>
+          otherRow.classList.remove("selected")
+        );
+
+        row.classList.add("selected");
+
+        document.getElementById("detailName").textContent =
+          row.dataset.name;
+
+        document.getElementById("detailRole").textContent =
+          row.dataset.role;
+
+        document.getElementById("detailCommittee").textContent =
+          row.dataset.committee;
+
+        detailCard.classList.add("active");
+      });
+    });
+  </script>
+
+</body>
+</html>
