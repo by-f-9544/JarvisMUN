@@ -44,7 +44,7 @@ window.PORTAL_DATA = {
     {
   name: "CCIMUN - Cedarbrae Collegiate Institute MUN",
   type: "In-person",
-  status: "Upcoming",
+  status: "Team Confirmed",
   date: "Saturday, December 5, 2026",
   location: "Cedarbrae Collegiate Institute",
   description: "Explore the CCIMUN conference opportunity and visit the official website for conference details and registration.",
