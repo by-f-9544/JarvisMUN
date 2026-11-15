@@ -8,12 +8,13 @@
 */
 window.PORTAL_DATA = {
   announcements: [
-    featured: true,
-  category: "CCIMUN 2026",
-  date: "November 15, 2026",
-  title: "CCIMUN 2026 Delegation Confirmed",
-  body: "The Jarvis MUN delegation for CCIMUN 2026 has been confirmed! Students can now check their delegation status and view the confirmed team roster on the Teams page."
-    {
+     {
+      featured: true,
+      category: "CCIMUN 2026",
+      date: "November 15, 2026",
+      title: "CCIMUN 2026 Delegation Confirmed",
+      body: "The Jarvis MUN delegation for CCIMUN 2026 has been confirmed! Students can now check their delegation status and view the confirmed team roster on the Teams page."
+    },
       category: "REMINDER",
       date: "Add a date",
       title: "Club meeting reminder",
