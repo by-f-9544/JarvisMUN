@@ -133,9 +133,10 @@ footer .brand-mark {
     font-size: 13px;
     line-height: 1.8;
   }
+}
 .hero-emblem {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
     object-fit: contain;
     display: block;
     margin: 0 auto;
