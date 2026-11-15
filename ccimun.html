@@ -369,41 +369,39 @@
     );
     const rosterCount = document.getElementById("rosterCount");
     const emptyState = document.getElementById("emptyState");
-    const detailCard = document.getElementById("detailCard");
 
-    function filterRoster() {
-      const query = searchInput.value.trim().toLowerCase();
-      let visibleCount = 0;
+    function closeDelegateDetails() {
+  const existing = document.querySelector(".detail-row");
+  if (existing) existing.remove();
 
-      rosterRows.forEach(row => {
-        const searchableText = (
-          row.dataset.name + " " +
-          row.dataset.role + " " +
-          row.dataset.committee
-        ).toLowerCase();
+  rosterRows.forEach(row => row.classList.remove("selected"));
+}
 
-        const matches = searchableText.includes(query);
+function filterRoster() {
+  const query = searchInput.value.trim().toLowerCase();
+  let visibleCount = 0;
 
-        row.style.display = matches ? "" : "none";
+  closeDelegateDetails();
 
-        if (matches) {
-          visibleCount++;
-        } else {
-          row.classList.remove("selected");
-        }
-      });
+  rosterRows.forEach(row => {
+    const searchableText = (
+      row.dataset.name + " " +
+      row.dataset.role + " " +
+      row.dataset.committee
+    ).toLowerCase();
 
-      rosterCount.textContent =
-        visibleCount + (visibleCount === 1 ? " delegate" : " delegates");
+    const matches = searchableText.includes(query);
+    row.style.display = matches ? "" : "none";
 
-      emptyState.style.display =
-        visibleCount === 0 ? "block" : "none";
+    if (matches) visibleCount++;
+  });
 
-      if (visibleCount === 0) {
-        detailCard.classList.remove("active");
-      }
-    }
+  rosterCount.textContent =
+    visibleCount + (visibleCount === 1 ? " delegate" : " delegates");
 
+  emptyState.style.display =
+    visibleCount === 0 ? "block" : "none";
+}
     searchInput.addEventListener("input", filterRoster);
 
     // Click a delegate to show their details
