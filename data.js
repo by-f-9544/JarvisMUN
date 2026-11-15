@@ -8,17 +8,11 @@
 */
 window.PORTAL_DATA = {
   announcements: [
-    {
-      featured: true,
-      category: "WELCOME",
-      date: "Update this date",
-      title: "Welcome to the Jarvis MUN Portal",
-      body: "This is the place to find club updates, conference opportunities, and ways to get involved. Replace this sample announcement with your first official update.",
-      day: "22",
-      month: "OCT",
-      shortTitle: "Portal launch & club updates",
-      shortBody: "A new home for Jarvis MUN announcements and opportunities."
-    },
+    featured: true,
+  category: "CCIMUN 2026",
+  date: "November 15, 2026",
+  title: "CCIMUN 2026 Delegation Confirmed",
+  body: "The Jarvis MUN delegation for CCIMUN 2026 has been confirmed! Students can now check their delegation status and view the confirmed team roster on the Teams page."
     {
       category: "REMINDER",
       date: "Add a date",
