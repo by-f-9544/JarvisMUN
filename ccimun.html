@@ -404,26 +404,50 @@ function filterRoster() {
 }
     searchInput.addEventListener("input", filterRoster);
 
-    // Click a delegate to show their details
+    // Click a delegate to expand details directly beneath their row
     rosterRows.forEach(row => {
       row.addEventListener("click", () => {
-        rosterRows.forEach(otherRow =>
-          otherRow.classList.remove("selected")
-        );
+        // Clicking the already-open delegate closes the dropdown
+        if (
+          row.nextElementSibling &&
+          row.nextElementSibling.classList.contains("detail-row")
+        ) {
+          closeDelegateDetails();
+          return;
+        }
 
+        closeDelegateDetails();
         row.classList.add("selected");
 
-        document.getElementById("detailName").textContent =
-          row.dataset.name;
+        const detailRow = document.createElement("tr");
+        detailRow.className = "detail-row";
 
-        document.getElementById("detailRole").textContent =
-          row.dataset.role;
+        const detailCell = document.createElement("td");
+        detailCell.colSpan = 3;
 
-        document.getElementById("detailCommittee").textContent =
-          row.dataset.committee;
+        const detailCard = document.createElement("div");
+        detailCard.className = "detail-card";
 
-        detailCard.classList.add("active");
+        const name = document.createElement("h3");
+        name.textContent = row.dataset.name;
+
+        const role = document.createElement("p");
+        role.innerHTML = "<strong>Role:</strong> ";
+        role.append(document.createTextNode(row.dataset.role));
+
+        const committee = document.createElement("p");
+        committee.innerHTML = "<strong>Committee:</strong> ";
+        committee.append(document.createTextNode(row.dataset.committee));
+
+        const note = document.createElement("p");
+        note.textContent = "Jarvis Collegiate · CCIMUN 2026 Delegation";
+
+        detailCard.append(name, role, committee, note);
+        detailCell.appendChild(detailCard);
+        detailRow.appendChild(detailCell);
+        row.after(detailRow);
       });
+    });
     });
   </script>
 
