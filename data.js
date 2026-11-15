@@ -48,7 +48,7 @@ window.PORTAL_DATA = {
   date: "Saturday, December 5, 2026",
   location: "Cedarbrae Collegiate Institute",
   description: "Explore the CCIMUN conference opportunity and visit the official website for conference details and registration.",
-  logo: "cciJCIMUNBLACK.png",
+  logo: "ccimun-logo.png",
   registrationLink: "https://forms.gle/JuXbDPF5F3aeEfjT7",
   officialLink: "https://www.ccimun.com/",
   link: "https://www.ccimun.com/",
