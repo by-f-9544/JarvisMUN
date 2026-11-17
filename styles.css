@@ -145,3 +145,43 @@ footer .brand-mark {
 .featured-update .conference-link {
     color: #FFFFFF;
 }
+/* HOMEPAGE PHOTO BACKGROUND */
+.hero {
+    background-image: url("jci2.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    grid-template-columns: 1fr;
+}
+
+.hero-art {
+    display: none;
+}
+
+.hero-copy {
+    max-width: 650px;
+}
+
+@media (max-width: 640px) {
+    .hero {
+        background-attachment: scroll;
+    }
+}
+
+.hero .eyebrow,
+.hero h1,
+.hero h1 em,
+.hero .hero-intro,
+.hero .hero-note,
+.hero .text-link {
+    color: #FFFFFF;
+}
+
+.hero h1 em {
+    color: #FFFFFF;
+}
+
+.hero .hero-intro {
+    text-shadow: 0 1px 4px #00000066;
+}
