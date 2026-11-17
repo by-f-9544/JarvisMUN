@@ -192,3 +192,10 @@ footer .brand-mark {
 .conferences-section .section-heading h2 em {
     color: #FFFFFF;
 }
+.conferences-section .eyebrow,
+.conferences-section .section-heading h2,
+.conferences-section .section-heading h2 em,
+.conferences-section .section-heading > p,
+.conferences-section .result-count {
+    color: #FFFFFF;
+}
