@@ -78,59 +78,82 @@ footer .brand-mark {
   color: #fff;
 }
 
+font: 800 clamp(38px, 4vw, 48px)/1.15 Manrope, sans-serif;
+  letter-spacing: -2px;
+  margin: 13px 0 45px;
+}
+
 .president-profile {
-  display: block;
-  max-width: 900px;
-  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  align-items: stretch;
+  gap: 42px;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0;
+}
+
+.president-visual {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
 }
 
 .president-photo {
   width: 100%;
-  max-width: 250px;
-  height: 100%;
+  flex: 1;
+  min-height: 0;
   object-fit: cover;
-  align-self: stretch;
+  object-position: center top;
   margin: 0;
 }
 
+.president-role {
+  font: 700 12px 'DM Mono', monospace;
+  letter-spacing: 1.5px;
+  color: var(--green2);
+  margin-top: 13px;
+}
+
 .president-copy {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .president-copy h3 {
-  font-size: 30px;
-  margin-bottom: 14px;
+  font: 800 36px Manrope, sans-serif;
+  margin-bottom: 18px;
 }
 
 .president-bio {
   max-width: none;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.85;
   margin: 0 0 16px;
 }
 
-.president-profile::after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
-/* Keep the layout readable on smaller screens */
 @media (max-width: 640px) {
+  .president-profile {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
   .president-photo {
-    width: 125px;
-    max-width: 40%;
-    margin-right: 18px;
-    margin-bottom: 12px;
+    aspect-ratio: 4 / 3;
+    flex: none;
+  }
+
+  .president-heading h2 {
+    font-size: 36px;
   }
 
   .president-copy h3 {
-    font-size: 25px;
+    font-size: 28px;
   }
 
   .president-bio {
-    font-size: 13px;
-    line-height: 1.8;
+    font-size: 14px;
   }
 }
 .hero-emblem {
