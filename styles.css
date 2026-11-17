@@ -141,3 +141,7 @@ footer .brand-mark {
     display: block;
     margin: 0 auto;
 }
+
+.featured-update .conference-link {
+    color: #FFFFFF;
+}
