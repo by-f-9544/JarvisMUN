@@ -185,3 +185,10 @@ footer .brand-mark {
 .hero .hero-intro {
     text-shadow: 0 1px 4px #00000066;
 }
+.conferences-section .section-heading h2 {
+    color: #FFFFFF;
+}
+
+.conferences-section .section-heading h2 em {
+    color: #FFFFFF;
+}
