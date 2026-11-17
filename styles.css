@@ -85,13 +85,12 @@ footer .brand-mark {
 }
 
 .president-photo {
-  float: left;
-  width: 180px;
-  max-width: 35%;
-  height: auto;
-  aspect-ratio: 1 / 1;
-  object-fit: contain;
-  margin: 4px 28px 16px 0;
+  width: 100%;
+  max-width: 250px;
+  height: 100%;
+  object-fit: cover;
+  align-self: stretch;
+  margin: 0;
 }
 
 .president-copy {
