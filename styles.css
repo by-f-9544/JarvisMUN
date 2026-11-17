@@ -109,7 +109,7 @@ font: 800 clamp(38px, 4vw, 48px)/1.15 Manrope, sans-serif;
 }
 
 .president-role {
-  font: 700 12px 'DM Mono', monospace;
+  font: 700 14px 'DM Mono', monospace;
   letter-spacing: 1.5px;
   color: var(--green2);
   margin-top: 13px;
